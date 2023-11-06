@@ -1,0 +1,32 @@
+# import knihoven
+library(ggplot2)
+library(tidyverse)
+
+
+source_data <- read.csv("https://raw.githubusercontent.com/schubertjan/cuni/master/stats/data/ess9.csv")
+
+View(source_data)
+
+summary(source_data)
+
+source_data |> 
+  ggplot(aes(x = maryr, y = frlgrsp_log)) +
+  geom_point()
+
+
+
+source_data<-
+  source_data|> 
+  select(maryr) |> 
+  mutate(
+    vek = 2023-maryr,
+  )
+
+;
+select(maryr), mutate(vek=2023-maryr)
+
+class(source_data$maryr) = "Numeric"
+
+source_data$vek <- source_data$maryr - 2023
+
+View(source_data)
